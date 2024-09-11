@@ -1,9 +1,10 @@
 export const bucket = new sst.aws.Bucket("Uploads");
 
+// Create the DynamoDB table
 export const table = new sst.aws.Dynamo("Notes", {
     fields: {
-        userId: "String",
-        noteId: "String",
+      userId: "string",
+      noteId: "string",
     },
-    primaryIndex: { partitionKey: "userId", sortKey: "noteId"},
-});
+    primaryIndex: { hashKey: "userId", rangeKey: "noteId" },
+  });
